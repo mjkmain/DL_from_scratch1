@@ -13,6 +13,7 @@
 
 ### 1. Mean Squared Error : MSE
 평균 제곱 오차의 수식은 다음과 같습니다.
+
 $$E = \frac{1}{2}\sum_{k=1}(y_k-t_k)^2
 $$
 
@@ -66,6 +67,7 @@ y_correct는 2번 index의 값이 0.6으로 가장 크고, y_wrong은 7번 index
 ---
 ### 2. Cross Entropy Error : CEE
 교차 엔트로피 에러의 수식은 다음과 같습니다.
+
 $$E = -\sum_{k}t_k\ln{y_k}
 $$
 
@@ -141,5 +143,3 @@ MSE나 CEE 이외에도 Task에 적합한 Loss function이 굉장히 많습니�
 
 MSE와 CCE의 수식 정도는 기억해두시면 좋을 것 같습니다.
 신경망은 Loss function을 지표로 최소화하는 방향으로 학습하는데, 이 과정에서 **미분**이 사용됩니다. 정확히는 **그래디언트(Gradient)**를 계산하며 Loss function을 최소화 합니다.
-
-다음 포스팅에서는 딥러닝에서 사용되는 **수치 미분**에 대해 작성해보도록 하겠습니다.

@@ -27,8 +27,7 @@
 >미분 = 순간변화율 = 평균변화율의 극한
 
 미분은 한 순간의 변화량을 의미합니다.
-$$\frac{d}{dx}f(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}
-$$
+$$\frac{d}{dx}f(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
 위의 식은 미분의 정의입니다. $h$는 "작은 변화"를 의미하는데, $h$라는 "작은 변화"가 $f(x)$를 얼마나 변화시키는지를 의미합니다.
 
@@ -157,10 +156,11 @@ plt.show()
   편미분이란 다변수함수에서 한 개의 변수에 대해서만 미분하는 미분법입니다.
   미분할 변수를 제외하고, 나머지 변수를 **상수로 취급** 합니다.
   
-  예를 들어, $$f(x, y) = 5x^2 + 2y^3$$이라고 하면
+  예를 들어, 
+  $$f(x, y) = 5x^2 + 2y^3$$이라고 하면
   
-  $$x$$에 관한 $$f$$의 편미분 $$\frac{\partial}{\partial x}f(x, y) =10x$$,
-  $$y$$에 관한 $$f$$의 편미분 $$\frac{\partial}{\partial y}f(x, y) =6y$$ 입니다.
+  $x$에 관한 $f$의 편미분 $\frac{\partial}{\partial x}f(x, y) =10x$,
+  $y$에 관한 $f$의 편미분 $\frac{\partial}{\partial y}f(x, y) =6y$ 입니다.
   
   코드로 구현할때도 나머지 변수를 **상수로 취급**한다는 개념을 이용합니다.
   
@@ -174,60 +174,45 @@ plt.show()
 > forward scheme에 대한 오차 : $|D_+f(a)-f'(a)|$
   
 - For sufficiently small $h > 0$,
-  $$f'(a)\approx \frac{f(a+h)-f(a)}{h}\eqqcolon D_{+}f(a)
-  $$
+  $$f'(a)\approx \frac{f(a+h)-f(a)}{h}\eqqcolon D_{+}f(a) $$
 
 - By Taylor Series,
-  $$f(x) = f(a) + f'(a)(x-a) + \frac{f''(c)}{2!}(x-a)^2 
-  $$
-  $$c\in[a, a+h]
-  $$
+  $$f(x) = f(a) + f'(a)(x-a) + \frac{f''(c)}{2!}(x-a)^2 $$
+  $$c\in[a, a+h]$$
 - $x\leftarrow a+h$
-  $$f(a+h) = f(a) + f'(a)h+\frac{f''(c)}{2!}h^2
-  $$
+  $$f(a+h) = f(a) + f'(a)h+\frac{f''(c)}{2!}h^2$$
   
 - Divide by h on both sides
-  $$\frac{f(a+h)-f(a)}{h} - f'(a) = \frac{f''(c)}{2!}h
-  $$
+  $$\frac{f(a+h)-f(a)}{h} - f'(a) = \frac{f''(c)}{2!}h$$
   
-  $$ D_+f(a)- f'(a) = \frac{f''(c)}{2!}h
-  $$
+  $$ D_+f(a)- f'(a) = \frac{f''(c)}{2!}h$$
   
-  $$ \therefore Error = |\frac{f''(c)}{2!}h| 
-  $$
+  $$ \therefore Error = |\frac{f''(c)}{2!}h| $$
   
   > backward scheme에 대한 오차 : $|D_-f(a)-f'(a)|$ forward와 동일한 방식으로 진행
   
-  $$ \therefore Error = |\frac{f''(c)}{2!}h|
-  $$
+  $$ \therefore Error = |\frac{f''(c)}{2!}h|$$
   
   > central scheme에 대한 오차 : $|Df(a)-f'(a)|$
   
 - For sufficiently small $h > 0$,
-  $$f'(x) \approx \frac{f(a+h)-f(a-h)}{2h}\eqqcolon Df(a)
-$$
+  $$f'(x) \approx \frac{f(a+h)-f(a-h)}{2h}\eqqcolon Df(a)$$
 - By Taylor Series,
-  $$f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f^{(3)}(c)}{3!}(x-a)^3
-  $$
+  $$f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f^{(3)}(c)}{3!}(x-a)^3$$
   
 - $x\leftarrow a+h$
-  $$f(x+h) = f(a)+f'(a)h + \frac{f''(a)}{2!}(x-a)^2h^2+\frac{f^{(3)}(c)}{3!}h^3 \quad\cdots (1)
-  $$
+  $$f(x+h) = f(a)+f'(a)h + \frac{f''(a)}{2!}(x-a)^2h^2+\frac{f^{(3)}(c)}{3!}h^3 \quad\cdots (1)$$
   
 - $x\leftarrow a-h$
-  $$f(x-h) = f(a)-f'(a)h + \frac{f''(a)}{2!}(x-a)^2h^2-\frac{f^{(3)}(c)}{3!}h^3 \quad\cdots (2)
-  $$
+  $$f(x-h) = f(a)-f'(a)h + \frac{f''(a)}{2!}(x-a)^2h^2-\frac{f^{(3)}(c)}{3!}h^3 \quad\cdots (2)$$
   
 - (1) - (2)
   
-  $$f(x+h)-f(x-h) = 2f'(a)h +2\frac{f^{(3)}(c)}{3!}h^3
-  $$
+  $$f(x+h)-f(x-h) = 2f'(a)h +2\frac{f^{(3)}(c)}{3!}h^3$$
 - Divide by 2h on both sides
-  $$\frac{f(x+h)-f(x-h)}{2h} - f'(a) = \frac{f^{(3)}(c)}{3!}h^3|
-  $$
+  $$\frac{f(x+h)-f(x-h)}{2h} - f'(a) = \frac{f^{(3)}(c)}{3!}h^3|$$
   
-  $$\therefore Error = |\frac{f^{(3)}(c)}{3!}h^3|
-  $$
+  $$\therefore Error = |\frac{f^{(3)}(c)}{3!}h^3|$$
   
   
   ---
